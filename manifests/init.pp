@@ -1,13 +1,6 @@
 class nlbdemo (
-  $virtual_ip,
-  $member_type='additional',
+  $nlb_ip,
 ){
-  case $member_type {
-    'primary'    : { Nlbdemo::Member <<||>> }
-    'additional' : { @@nlbdemo::member { $::hostname : } }
-    default : { }
-  }
-  windowsfeature { 'NLB' : }
   windowsfeature { 'Web-WebServer' : }
   file { 'c:\inetpub\wwwroot\test.html' :
     ensure  => file,
@@ -15,7 +8,7 @@ class nlbdemo (
     require => Windowsfeature['Web-WebServer'],
   }
   host { 'www.puppetonwindows.com' :
-    ip           => $virtual_ip,
+    ip           => $nlb_ip,
     comment      => 'Network Load Balancer - Puppet',
   }
 }

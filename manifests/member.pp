@@ -12,8 +12,8 @@ define nlbdemo::member (
     "-ClusterName '${nlb_name}'",
     "-ClusterPrimaryIP '${nlb_ip}'",
     "-SubnetMask '${nlb_subnet}'",
-    "-OperationMode '${nlb_mode}'", 
-   ]
+    "-OperationMode '${nlb_mode}'",
+    ]
   $ps_clearports = "Get-NlbClusterPortRule | Remove-NlbClusterPortRule -Force"
   $ps_addmember  = "Add-NlbClusterNode -NewNodeName '${member_name}' -NewNodeInterface '${member_nic}'"
   # stdlib Functions
